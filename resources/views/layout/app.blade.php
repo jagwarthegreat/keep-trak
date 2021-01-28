@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
-        <title>NOTES docs</title>
+        <title>Keep-trak</title>
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -39,7 +39,7 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                        NOTES keep
+                        Keep-trak
                     </a>
                 </div>
                 <ul class="nav">
