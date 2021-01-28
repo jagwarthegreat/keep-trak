@@ -5,6 +5,6 @@ Keep track of your asset in your company. Find , check , tag , tansfer items to 
 ### install laravel dependencies
 
 ```sh
-	$ composer install
-	$ php artisan serve
+$ composer install
+$ php artisan serve
 ```
