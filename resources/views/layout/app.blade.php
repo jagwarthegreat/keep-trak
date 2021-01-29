@@ -95,8 +95,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="{{route('user')}}">Users</a>
-                                    <div class="divider"></div>
-                                    <a class="dropdown-item" href="#">Logout</a>
+                                    <!-- <div class="divider"></div>
+                                    <a class="dropdown-item" href="#">Logout</a> -->
                                 </div>
                             </li>
                         </ul>
