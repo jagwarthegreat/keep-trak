@@ -10,6 +10,7 @@ Features:
 -   Repair and dump item's
 -   Generate report for the item's in every location
 -   User information management
+-   Written in Laravel with Laravel Breeze
 
 ### install laravel dependencies
 
