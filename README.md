@@ -22,3 +22,5 @@ $ create database keep
 $ php artisan migrate
 $ php artisan serve or (localhost/keep-trak/public)
 ```
+
+![image](https://user-images.githubusercontent.com/37282871/109963542-7e3c2700-7d27-11eb-87d9-0fdcea3284e5.png)
