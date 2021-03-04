@@ -11,7 +11,7 @@
 </div>
 @endif
 <div class="row">
-	<div class="col">
+	<div class="col" style="height: calc(100%); overflow-y: auto;">
 		<form action="{{route('item.store')}}" method="post">
 
 			<div class="form-group">
@@ -75,7 +75,11 @@
 				<table class="table table-hover" id="item-table">
 					<thead>
 						<th>ID</th>
+						<th>SERIAL</th>
 						<th>NAME</th>
+						<th>DESCRIPTION</th>
+						<th>CATEGORY</th>
+						<th>LOCATION</th>
 						<th>ACTION</th>
 					</thead>
 					<tbody>
@@ -83,7 +87,11 @@
 						@foreach($item_data as $itemList)
 						<tr>
 							<td>{{$itemList->id}}</td>
+							<td>{{$itemList->serial}}</td>
 							<td>{{$itemList->name}}</td>
+							<td>{{$itemList->description}}</td>
+							<td>{{$itemList->category_id}}</td>
+							<td>{{$itemList->location_id}}</td>
 							<td>
 								<div class="dropdown">
 									<button class="btn btn-secondary btn-xs btn-fill dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
