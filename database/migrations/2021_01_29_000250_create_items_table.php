@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('serial', 50)->nullable();
             $table->string('name', 50);
             $table->integer('user_id');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('location_id');
             $table->integer('category_id');
             $table->timestamp('updated_at')->nullable();
