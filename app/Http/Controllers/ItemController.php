@@ -16,9 +16,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $item_data = Items::where('id', '>', 0)->get();
-        $cat_data = ItemCategory::where('id', '>', 0)->get();
-        $loc_data = Location::where('id', '>', 0)->get();
+        $item_data = Items::where('id', '>', 0)->orderByDesc('id')->get();
+        $cat_data = ItemCategory::where('id', '>', 0)->orderByDesc('id')->get();
+        $loc_data = Location::where('id', '>', 0)->orderByDesc('id')->get();
         return view('items/index', compact('item_data', 'cat_data', 'loc_data'));
     }
 
@@ -54,6 +54,12 @@ class ItemController extends Controller
         } else {
             return redirect()->back()->with('item', 'Field is blank, please check!');
         }
+    }
+
+    public function getCategoryName($catId)
+    {
+        $response = ItemCategory::select("name")->where('id', $catId)->get();
+        return $response["name"];
     }
 
     /**

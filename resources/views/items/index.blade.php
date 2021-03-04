@@ -90,8 +90,8 @@
 							<td>{{$itemList->serial}}</td>
 							<td>{{$itemList->name}}</td>
 							<td>{{$itemList->description}}</td>
-							<td>{{$itemList->category_id}}</td>
-							<td>{{$itemList->location_id}}</td>
+							<td>{{$itemList->category->name}}</td>
+							<td>{{$itemList->location->name}}</td>
 							<td>
 								<div class="dropdown">
 									<button class="btn btn-secondary btn-xs btn-fill dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
