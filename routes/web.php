@@ -19,7 +19,7 @@ use App\Http\Controllers\ItemController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->middleware(['auth']);
 
 Route::group(['prefix' => 'user'], function ($router) {
     Route::get('/', [UserController::class, 'index'])->name('user');
@@ -52,3 +52,13 @@ Route::group(['prefix' => 'item'], function ($router) {
     Route::get('/edit/{id}', [ItemController::class, 'edit'])->name('item.edit');
     Route::post('/update/{id}', [ItemController::class, 'update'])->name('item.update');
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';

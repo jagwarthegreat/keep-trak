@@ -99,12 +99,17 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="no-icon">Settings</span>
+                                    <span class="no-icon">{{ Auth::user()->name }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="{{route('user')}}">Users</a>
                                     <!-- <div class="divider"></div>
                                     <a class="dropdown-item" href="#">Logout</a> -->
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a type="submit" class="dropdown-item" href="{{route('logout')}}">{{ __('Log out') }}</a>
+                                    </form>
                                 </div>
                             </li>
                         </ul>

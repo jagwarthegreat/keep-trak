@@ -16,9 +16,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $item_data = Items::where('id', '>', 0)->orderByDesc('id')->get();
-        $cat_data = ItemCategory::where('id', '>', 0)->orderByDesc('id')->get();
-        $loc_data = Location::where('id', '>', 0)->orderByDesc('id')->get();
+        $item_data = Items::where('id', '>', 0)->orderBy('id', 'DESC')->get();
+        $cat_data = ItemCategory::where('id', '>', 0)->orderBy('name', 'ASC')->get();
+        $loc_data = Location::where('id', '>', 0)->orderBy('name', 'ASC')->get();
         return view('items/index', compact('item_data', 'cat_data', 'loc_data'));
     }
 
@@ -56,12 +56,6 @@ class ItemController extends Controller
         }
     }
 
-    public function getCategoryName($catId)
-    {
-        $response = ItemCategory::select("name")->where('id', $catId)->get();
-        return $response["name"];
-    }
-
     /**
      * Display the specified resource.
      *
@@ -83,7 +77,9 @@ class ItemController extends Controller
     {
         $item_data = Items::find($id);
         if ($item_data) {
-            return view('items/detail', compact('item_data'));
+            $cat_data = ItemCategory::where('id', '>', 0)->orderBy('name', 'ASC')->get();
+            $loc_data = Location::where('id', '>', 0)->orderBy('name', 'ASC')->get();
+            return view('items/detail', compact('item_data', 'cat_data', 'loc_data'));
         }
     }
 
@@ -96,7 +92,15 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Items::where('id', $id)->update(['name' => $request['loc-name-edit']]);
+        $data = [
+            'name' => $request['edit_item_name'],
+            'serial' => $request['edit_item_serial'],
+            'category_id' => $request['edit_item_category'],
+            'location_id' => $request['edit_item_loc'],
+            'description' => $request['edit_item_description']
+        ];
+
+        Items::where('id', $id)->update($data);
         return redirect()->back()->with('item', 'Item updated successfully');
     }
 
