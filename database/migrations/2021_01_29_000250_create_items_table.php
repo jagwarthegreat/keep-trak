@@ -15,11 +15,12 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('serial', 15)->unique();
-            $table->string('name', 15);
+            $table->string('serial', 20)->nullable();
+            $table->string('name', 50);
             $table->integer('user_id');
+            $table->text('description');
             $table->integer('location_id');
-            $table->text('tags');
+            $table->integer('category_id', 11);
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
         });
