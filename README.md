@@ -25,4 +25,4 @@ $ php artisan migrate
 $ php artisan serve or (localhost/keep-trak/public)
 ```
 
-![image](https://user-images.githubusercontent.com/37282871/109976794-21486d00-7d37-11eb-96bc-225982fa0f41.png)
+![image](https://user-images.githubusercontent.com/37282871/109977429-c6634580-7d37-11eb-9637-4b4e2dccf9d4.png)
