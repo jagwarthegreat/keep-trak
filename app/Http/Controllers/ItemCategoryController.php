@@ -14,7 +14,7 @@ class ItemCategoryController extends Controller
      */
     public function index()
     {
-        $cat_data = ItemCategory::where('id', '>', 0)->get();
+        $cat_data = ItemCategory::where('id', '>', 0)->orderBy('id', 'DESC')->paginate(15);
         return view('itemCategories/index', compact('cat_data'));
     }
 
@@ -36,15 +36,15 @@ class ItemCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        if($request['cat_name'] != ""){
-            $new_cat = new ItemCategory();
-            $new_cat->name = $request['cat_name'];
-            $new_cat->save();
+        $request->validate([
+            'cat_name' => 'required'
+        ]);
 
-            return redirect()->back()->with('item-category', 'Category added successfully');
-        }else{
-            return redirect()->back()->with('item-category', 'Field is blank, please check!');
-        }
+        $new_cat = new ItemCategory();
+        $new_cat->name = $request->cat_name;
+        $new_cat->save();
+
+        return redirect()->back()->with('item-category', 'Category added successfully');
     }
 
     /**
@@ -67,7 +67,7 @@ class ItemCategoryController extends Controller
     public function edit($id)
     {
         $cat_data = ItemCategory::find($id);
-        if($cat_data){
+        if ($cat_data) {
             return view('itemCategories/detail', compact('cat_data'));
         }
     }
@@ -81,7 +81,7 @@ class ItemCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        ItemCategory::where('id', $id)->update(['name'=> $request['loc-name-edit']]);
+        ItemCategory::where('id', $id)->update(['name' => $request['loc-name-edit']]);
         return redirect()->back()->with('item-category', 'Category updated successfully');
     }
 
@@ -94,7 +94,7 @@ class ItemCategoryController extends Controller
     public function destroy($id)
     {
         $catData = ItemCategory::find($id);
-        if($catData){
+        if ($catData) {
             $catData->delete();
         }
 

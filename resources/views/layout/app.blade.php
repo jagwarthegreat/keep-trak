@@ -75,6 +75,12 @@
                             <p>Transfer</p>
                         </a>
                     </li>
+                    <li nav-item>
+                        <a class="nav-link" href="{{URL::to('/report')}}">
+                            <i class="nc-icon nc-paper-2"></i>
+                            <p>Report</p>
+                        </a>
+                    </li>
 
                     <li class="nav-item active-pro">
                         <a class="nav-link text-center" href="#">

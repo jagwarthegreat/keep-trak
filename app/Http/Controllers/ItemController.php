@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Items;
 use App\Models\ItemCategory;
 use App\Models\Location;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -16,7 +17,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $item_data = Items::where('id', '>', 0)->orderBy('id', 'DESC')->get();
+        $item_data = Items::where('id', '>', 0)->orderBy('id', 'DESC')->paginate(15);
         $cat_data = ItemCategory::where('id', '>', 0)->orderBy('name', 'ASC')->get();
         $loc_data = Location::where('id', '>', 0)->orderBy('name', 'ASC')->get();
         return view('items/index', compact('item_data', 'cat_data', 'loc_data'));
@@ -40,20 +41,22 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request['item_name'] != "" || $request['item_category']) {
-            $new_item = new Items();
-            $new_item->serial = $request['item_serial'];
-            $new_item->name = $request['item_name'];
-            $new_item->description = $request['item_description'];
-            $new_item->user_id = 1;
-            $new_item->location_id = $request['item_loc'];
-            $new_item->category_id = $request['item_category'];
-            $new_item->save();
+        $request->validate([
+            'item_name' => 'required',
+            'item_loc' => 'required',
+            'item_category' => 'required'
+        ]);
 
-            return redirect()->back()->with('item', 'Item added successfully');
-        } else {
-            return redirect()->back()->with('item', 'Field is blank, please check!');
-        }
+        $new_item = new Items();
+        $new_item->serial = $request->item_serial;
+        $new_item->name = $request->item_name;
+        $new_item->description = $request->item_description;
+        $new_item->user_id = Auth::user()->id;
+        $new_item->location_id = $request->item_loc;
+        $new_item->category_id = $request->item_category;
+        $new_item->save();
+
+        return redirect()->back()->with('item', 'Item added successfully');
     }
 
     /**

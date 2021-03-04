@@ -10,6 +10,21 @@
 	</div>
 </div>
 @endif
+
+@if ($errors->any())
+<div class='row' style="padding-bottom: 30px;margin: -30px;">
+	<div class="col-12 mb-1" style="padding: 0px;">
+		<div class="alert alert-danger" style="color: #fff;">
+			<ul>
+				@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	</div>
+</div>
+@endif
+
 <div class="row">
 	<div class="col" style="height: calc(100%); overflow-y: auto;">
 		<form action="{{route('item.store')}}" method="post">
@@ -74,7 +89,6 @@
 			<div class="card-body table-full-width table-responsive">
 				<table class="table table-hover" id="item-table">
 					<thead>
-						<th>ID</th>
 						<th>SERIAL</th>
 						<th>NAME</th>
 						<th>DESCRIPTION</th>
@@ -86,7 +100,6 @@
 
 						@foreach($item_data as $itemList)
 						<tr>
-							<td>{{$itemList->id}}</td>
 							<td>{{$itemList->serial}}</td>
 							<td>{{$itemList->name}}</td>
 							<td>{{$itemList->description}}</td>
@@ -108,6 +121,10 @@
 
 					</tbody>
 				</table>
+
+				<div class="d-flex justify-content-center">
+					{{ $item_data->links() }}
+				</div>
 			</div>
 		</div>
 	</div>

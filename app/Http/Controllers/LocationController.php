@@ -14,8 +14,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $loc_data = Location::where('id', '>', 0)->get();
-    	return view('locations/index', compact('loc_data'));
+        $loc_data = Location::where('id', '>', 0)->orderBy('id', 'DESC')->paginate(15);
+        return view('locations/index', compact('loc_data'));
     }
 
     /**
@@ -36,15 +36,15 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        if($request['loc_name'] != ""){
-            $new_loc = new Location();
-            $new_loc->name = $request['loc_name'];
-            $new_loc->save();
+        $request->validate([
+            'loc_name' => 'required'
+        ]);
 
-            return redirect()->back()->with('location', 'Location added successfully');
-        }else{
-            return redirect()->back()->with('location', 'Field is blank, please check!');
-        }
+        $new_loc = new Location();
+        $new_loc->name = $request->loc_name;
+        $new_loc->save();
+
+        return redirect()->back()->with('location', 'Location added successfully');
     }
 
     /**
@@ -67,7 +67,7 @@ class LocationController extends Controller
     public function edit($id)
     {
         $loc_data = Location::find($id);
-        if($loc_data){
+        if ($loc_data) {
             return view('locations/detail', compact('loc_data'));
         }
     }
@@ -81,7 +81,7 @@ class LocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Location::where('id', $id)->update(['name'=> $request['loc-name-edit']]);
+        Location::where('id', $id)->update(['name' => $request['loc-name-edit']]);
         return redirect()->back()->with('location', 'Location updated successfully');
     }
 
@@ -94,7 +94,7 @@ class LocationController extends Controller
     public function destroy($id)
     {
         $locData = Location::find($id);
-        if($locData){
+        if ($locData) {
             $locData->delete();
         }
 
