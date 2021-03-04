@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
             $table->integer('user_id');
             $table->text('description');
             $table->integer('location_id');
-            $table->integer('category_id', 11);
+            $table->integer('category_id');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
         });
