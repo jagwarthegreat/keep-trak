@@ -108,7 +108,7 @@
                                     <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-                                        <a type="submit" class="dropdown-item" href="{{route('logout')}}">{{ __('Log out') }}</a>
+                                        <button type="submit" class="dropdown-item" href="{{route('logout')}}">Log out</button>
                                     </form>
                                 </div>
                             </li>
