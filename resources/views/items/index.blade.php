@@ -113,6 +113,7 @@
 									<ul class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuButton">
 										<li><a class="dropdown-item" href="{{route('item.destroy', $itemList->id)}}">Delete</a></li>
 										<li><a class="dropdown-item" href="{{route('item.edit', $itemList->id)}}">Edit</a></li>
+										<li><a class="dropdown-item" href="{{route('item.history', $itemList->id)}}">History</a></li>
 									</ul>
 								</div>
 							</td>

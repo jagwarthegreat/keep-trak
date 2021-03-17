@@ -122,4 +122,13 @@ class ItemController extends Controller
 
         return redirect()->back()->with('item', 'Item deleted successfully');
     }
+
+    public function history($id)
+    {
+        $item_history_data = Items::find($id);
+        if ($item_history_data) {
+            $transferHistory = []; //Location::where('id', '>', 0)->orderBy('name', 'ASC')->get();
+            return view('items/history', compact('item_history_data', 'transferHistory'));
+        }
+    }
 }
