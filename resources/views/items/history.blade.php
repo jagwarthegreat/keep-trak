@@ -10,12 +10,13 @@
     <div class="col-md-12">
         <div class="card card-plain table-plain-bg">
             <div class="card-header ">
-                <h4 class="card-title" style="font-weight: 400;">Item History of <b>{{ $item_history_data->name }}</b></h4>
+                <h4 class="card-title" style="font-weight: 400;">History of <b>{{ $item_history_data->name }}</b></h4>
                 <p class="card-category">Here is the item history.</p>
             </div>
             <div class="card-body table-full-width table-responsive">
                 <table class="table table-hover" id="item-history-table">
                     <thead>
+                        <th></th>
                         <th>LOCATION</th>
                         <th>HANDED TO</th>
                         <th>STATUS</th>
@@ -24,6 +25,7 @@
 
 
                         <tr>
+                            <td>1</td>
                             <td>test name</td>
                             <td>test name</td>
                             <td>test name</td>

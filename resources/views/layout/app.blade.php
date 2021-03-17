@@ -46,37 +46,37 @@
                 </div>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{URL::to('/')}}">
+                        <a class="nav-link" href="{{ URL::to('/') }}">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li nav-item>
-                        <a class="nav-link" href="{{route('loc')}}">
+                        <a class="nav-link" href="{{ route('loc') }}">
                             <i class="nc-icon nc-square-pin"></i>
                             <p>Location</p>
                         </a>
                     </li>
                     <li nav-item>
-                        <a class="nav-link" href="{{route('cat')}}">
+                        <a class="nav-link" href="{{ route('cat') }}">
                             <i class="nc-icon nc-layers-3"></i>
                             <p>Category</p>
                         </a>
                     </li>
                     <li nav-item>
-                        <a class="nav-link" href="{{URL::to('/item')}}">
+                        <a class="nav-link" href="{{ route('item') }}">
                             <i class="nc-icon nc-app"></i>
                             <p>Item</p>
                         </a>
                     </li>
                     <li nav-item>
-                        <a class="nav-link" href="{{URL::to('/transfer')}}">
+                        <a class="nav-link" href="{{ route('transfer') }}">
                             <i class="nc-icon nc-delivery-fast"></i>
                             <p>Transfer</p>
                         </a>
                     </li>
                     <li nav-item>
-                        <a class="nav-link" href="{{URL::to('/report')}}">
+                        <a class="nav-link" href="{{ route('report') }}">
                             <i class="nc-icon nc-paper-2"></i>
                             <p>Report</p>
                         </a>
@@ -114,7 +114,7 @@
                                     <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-                                        <button type="submit" class="dropdown-item" href="{{route('logout')}}">Log out</button>
+                                        <button type="submit" class="dropdown-item" href="{{ route('logout') }}">Log out</button>
                                     </form>
                                 </div>
                             </li>

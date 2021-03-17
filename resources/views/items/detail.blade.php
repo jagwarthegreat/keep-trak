@@ -11,7 +11,12 @@
 </div>
 @endif
 <div class="row">
-	<div class="col">
+	<div class="col-12">
+		<div class="form-group">
+			<a href="{{route('item')}}" class="btn btn-info btn-sm btn-fill"><i class="nc-icon nc-stre-left"></i> GO BACK</a>
+		</div>
+	</div>
+	<div class="col-12">
 		<form action="{{route('item.update', $item_data->id)}}" method="post">
 
 			<div class="form-group">

@@ -89,6 +89,7 @@
 			<div class="card-body table-full-width table-responsive">
 				<table class="table table-hover" id="item-table">
 					<thead>
+						<th></th>
 						<th>SERIAL</th>
 						<th>NAME</th>
 						<th>DESCRIPTION</th>
@@ -100,6 +101,7 @@
 
 						@foreach($item_data as $itemList)
 						<tr>
+							<td>{{$loop->iteration + $item_data->firstItem() - 1}}</td>
 							<td>{{$itemList->serial}}</td>
 							<td>{{$itemList->name}}</td>
 							<td>{{$itemList->description}}</td>
@@ -111,8 +113,8 @@
 										option
 									</button>
 									<ul class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-										<li><a class="dropdown-item" href="{{route('item.destroy', $itemList->id)}}">Delete</a></li>
 										<li><a class="dropdown-item" href="{{route('item.edit', $itemList->id)}}">Edit</a></li>
+										<li><a class="dropdown-item" href="{{route('item.destroy', $itemList->id)}}">Delete</a></li>
 										<li><a class="dropdown-item" href="{{route('item.history', $itemList->id)}}">History</a></li>
 									</ul>
 								</div>

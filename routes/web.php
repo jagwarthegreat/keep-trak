@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ItemCategoryController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\TransferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,24 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', [ItemController::class, 'edit'])->name('item.edit');
         Route::post('/update/{id}', [ItemController::class, 'update'])->name('item.update');
         Route::get('/history/{id}', [ItemController::class, 'history'])->name('item.history');
+    });
+
+    Route::group(['prefix' => 'transfer'], function ($router) {
+        Route::get('/', [TransferController::class, 'index'])->name('transfer');
+        Route::post('/store', [TransferController::class, 'store'])->name('transfer.store');
+        Route::get('/{id}', [TransferController::class, 'destroy'])->name('transfer.destroy');
+        Route::get('/edit/{id}', [TransferController::class, 'edit'])->name('transfer.edit');
+        Route::post('/update/{id}', [TransferController::class, 'update'])->name('transfer.update');
+        // Route::get('/history/{id}', [TransferController::class, 'history'])->name('transfer.history');
+    });
+
+    Route::group(['prefix' => 'report'], function ($router) {
+        Route::get('/', [TransferController::class, 'index'])->name('report');
+        // Route::post('/store', [TransferController::class, 'store'])->name('transfer.store');
+        // Route::get('/{id}', [TransferController::class, 'destroy'])->name('transfer.destroy');
+        // Route::get('/edit/{id}', [TransferController::class, 'edit'])->name('transfer.edit');
+        // Route::post('/update/{id}', [TransferController::class, 'update'])->name('transfer.update');
+        // Route::get('/history/{id}', [TransferController::class, 'history'])->name('transfer.history');
     });
 });
 

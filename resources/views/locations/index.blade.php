@@ -53,6 +53,7 @@
 			<div class="card-body table-full-width table-responsive">
 				<table class="table table-hover">
 					<thead>
+						<th></th>
 						<th>NAME</th>
 						<th>ACTION</th>
 					</thead>
@@ -60,6 +61,7 @@
 
 						@foreach($loc_data as $locList)
 						<tr>
+							<td>{{$loop->iteration + $loc_data->firstItem() - 1}}</td>
 							<td>{{$locList->name}}</td>
 							<td>
 								<div class="dropdown">
@@ -67,8 +69,8 @@
 										option
 									</button>
 									<ul class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-										<li><a class="dropdown-item" href="{{route('loc.destroy', $locList->id)}}">Delete</a></li>
 										<li><a class="dropdown-item" href="{{route('loc.edit', $locList->id)}}">Edit</a></li>
+										<li><a class="dropdown-item" href="{{route('loc.destroy', $locList->id)}}">Delete</a></li>
 									</ul>
 								</div>
 							</td>
